@@ -1,0 +1,13 @@
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: script
+        run: |
+          git clone https://github.com/richfelker/musl-cross-make
+          cd musl-cross-make
+          cp ../config.mak ./
+          make
+          make install
